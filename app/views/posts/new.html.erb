@@ -1,0 +1,16 @@
+<h1>ナガレボシ</h1>
+<h3>新規投稿</h3>
+<%= form_with model: @post do |f| %>
+
+    <%= f.select :faculty, [["運動", "運動"], ["勉強", "勉強"], ["ダイエット", "ダイエット"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+
+    <%= f.submit '送信'%>
+ <% end %>
+<%= form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :宣言 %>
+    <%= f.text_field :people, :size => 140 %>
+  </div>
+  <%= f.submit "宣言する!" %>
+<% end %>
+<%= link_to "スレッドに戻る", posts_path %>
