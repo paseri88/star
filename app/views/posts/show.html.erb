@@ -1,18 +1,50 @@
+<%= link_to "TOP", "/home" %>
+<%= link_to "ABOUT", "/bot" %>
+<% if user_signed_in? %>
+<li><%= link_to "My page", user_path(current_user.id) %></li>
+<% end %>
+<li><%= link_to "Sign up", new_user_registration_path %></li>  
+<li><%= link_to "Sign in", new_user_session_path %></li>
 <h1>ナガレボシ</h1>
 <h3>投稿詳細</h3>
+<%= link_to "ALL", posts_path %>
+<%= link_to "新規投稿へ", new_post_path %>
+<%= link_to "勉強", "/study" %>
+<%= link_to "運動", "/sport" %>
+<%= link_to "仕事", "/job" %>
+<%= link_to "美容", "/art" %>
+<%= link_to "暮らし", "/bed" %>
+<%= link_to "その他", "/other" %>
+<%= link_to "Back", :back %>
 <div class="post">
-  <p><%= @post.people %></p>
+  <p>名前:<%= @post.user.name %></p>
+  <p>頑張ること:<%= @post.target %></p>
+  <p>話したいこと:<%= @post.people %></p>
   <p><%= @post.created_at %></p>
+  <% if user_signed_in? %>
+      <% if current_user.already_liked?(@post) %>
+          <%= link_to post_like_path(@post), method: :delete do %>
+             <p>いいねを取り消す</p><%= @post.likes.count %>
+          <% end %>
+      <% else %>
+          <%= link_to post_likes_path(@post), method: :post do %>
+             <p>いいね</p><%= @post.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <p>いいねの数 = </p><%= @post.likes.count %>
+  <% end %>
 </div>
 <div class="chat-wrapper">
   <p>コメント一覧</p>
   <% @chats.each do |c| %>
     <div>
-      <%= c.user.email unless c.user.blank? %>
+      <%= c.user.name %>
       <br>
       <%= c.content %>
     </div>
       <br>
+      
   <% end %>
 
   <% if user_signed_in? %>
@@ -24,5 +56,4 @@
     <% end %>
   <% end %>
 </div>
-<%= link_to "投稿一覧に戻る", posts_path %>
 <%= link_to "編集する", edit_post_path(@post.id) %>

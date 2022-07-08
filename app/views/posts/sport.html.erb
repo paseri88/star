@@ -1,0 +1,50 @@
+<%= link_to "TOP", "/home" %>
+<%= link_to "ABOUT", "/bot" %>
+<% if user_signed_in? %>
+<li><%= link_to "My page", user_path(current_user.id) %></li>
+<% end %>
+
+<%= link_to "新規投稿へ", new_post_path %>
+<h1>運動</h1>
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+<%= link_to "ALL", posts_path %>
+<%= link_to "新規投稿へ", new_post_path %>
+<%= link_to "勉強", "/study" %>
+<%= link_to "運動", "/sport" %>
+<%= link_to "仕事", "/job" %>
+<%= link_to "美容", "/art" %>
+<%= link_to "暮らし", "/bed" %>
+<%= link_to "その他", "/other" %>
+<% @posts.each do |t| %>
+  <% if t.category == "sport" %> 
+  <a href="/users/<%= t.user.id %>"></a>
+  <div class="post">
+  <%= t.people %></p>
+<% if user_signed_in? %>
+  <% if current_user.already_liked?(t) %>
+      <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+          <p>いいねを取り消す</p><%= t.likes.count %>
+      <% end %>
+  <% else %>
+      <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+          <p>いいね</p><%= t. likes.count %>
+      <% end %>
+<% end %>
+<% else %>
+<% if user_signed_in? %>
+    <p>いいねの数 = </p><%= t.likes.count %>
+<% end %>
+<% end %>
+    <%= t.created_at %>
+    <%= link_to "詳細へ", post_path(t.id) %>
+    <% if user_signed_in? && current_user.id == t.user_id %> 
+    <%= link_to "編集する", edit_post_path(t.id) %>
+    <%= link_to "削除する", post_path(t.id), method: :delete %>
+    <% end %> 
+  </div>
+  <% end %>
+<% end %>

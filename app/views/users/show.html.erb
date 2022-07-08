@@ -1,0 +1,38 @@
+<%= link_to "TOP", "/home" %>
+<%= link_to "ABOUT", "/bot" %>
+<% if user_signed_in? %>
+<li><%= link_to "My page", user_path(current_user.id) %></li>
+<% end %>
+<li><%= link_to "Sign up", new_user_registration_path %></li>  
+<li><%= link_to "Sign in", new_user_session_path %></li>
+<%= link_to "ALL", posts_path %>
+<%= link_to "新規投稿へ", new_post_path %>
+<%= link_to "勉強", "/study" %>
+<%= link_to "運動", "/sport" %>
+<%= link_to "仕事", "/job" %>
+<%= link_to "美容", "/art" %>
+<%= link_to "暮らし", "/bed" %>
+<%= link_to "その他", "/other" %>
+<p><h1>My page</h1><%= @user.name %>さん</p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "プロフィール変更", edit_user_registration_path %>
+<% end %>
+
+<h2>投稿一覧</h2>
+<% @user.posts.each do |t| %>
+  <%= t.people %>
+  <%= link_to "詳細へ", post_path(t.id) %>
+  <%= link_to "編集する", edit_post_path(t.id) %>
+  <%= link_to "削除する", post_path(t.id), method: :delete %>
+<% end %>
+
+<h2>いいねした投稿一覧</h2>
+<% @user.liked_posts.each do |t| %>
+  <%= t.user.name %>
+  <%= t.people %>
+  <%= link_to "詳細へ", post_path(t.id) %>
+<% end %>
+

@@ -1,0 +1,16 @@
+<%= link_to "TOP", "/home" %>
+<%= link_to "ABOUT", "/bot" %>
+<% if user_signed_in? %>
+<li><%= link_to "My page", user_path(current_user.id) %></li>
+<% end %>
+<li><%= link_to "Sign up", new_user_registration_path %></li>  
+<li><%= link_to "Sign in", new_user_session_path %></li>
+
+<h1>ナガレボシ</h1>
+<h3>〜願い事をあなたの手で〜<h3>
+<%= link_to "勉強", "/study" %>
+<%= link_to "運動", "/sport" %>
+<%= link_to "仕事", "/job" %>
+<%= link_to "美容", "/art" %>
+<%= link_to "暮らし", "/bed" %>
+<%= link_to "その他", "/other" %>

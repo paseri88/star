@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'posts/new' => 'posts#new'
-  post 'posts' => 'posts#create'
-  get 'posts/:id' => 'posts#show', as: 'post'
-  patch 'posts/:id' => 'posts#update'
-  delete 'posts/:id' => 'posts#destroy' #ここに挿入！！！
-  get 'posts/:id/edit' => 'posts#edit', as: 'edit_post'
+  resources :users, only: [:show]
+
+  get 'study' => 'posts#study'
+  get 'sport' => 'posts#sport'
+  get 'job' => 'posts#job'
+  get 'art' => 'posts#art'
+  get 'bed' => 'posts#bed'
+  get 'other' => 'posts#other'
+  get 'top' => 'posts#top'
+  get 'home' => 'posts#home'
+  get 'bot' => 'posts#bot'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :posts do
-    resources :chats, only: [:create]
+    resources :chats, only: [:create] do
+     
+  end
+    resources :likes, only: [:create, :destroy]
   end
 
-  root 'posts#index'
+  root 'posts#home'
 end

@@ -1,0 +1,13 @@
+<%= link_to "TOP", "/home" %>
+<%= link_to "ABOUT", "/bot" %>
+<% if user_signed_in? %>
+<li><%= link_to "My page", user_path(current_user.id) %></li>
+<% end %>
+<li><%= link_to "Sign up", new_user_registration_path %></li>  
+<li><%= link_to "Sign in", new_user_session_path %></li>
+<h1>ABOUT<h/1>
+<h3>あなたには流れ星にお願いしたい目標や叶えたいことはありますか?<h3>
+<h3>「目標はあるけど何をしたらいいか分からない」<h3>
+<h3>「一緒にがんばってくれる仲間が欲しい」<h3> 
+<h3>このサイトはそんなあなたが仲間と情報共有したり応援しあったりする、<h3>
+<h3>あなた自身が「夢を叶える流れ星になる」ためのサイトです。<h3>
