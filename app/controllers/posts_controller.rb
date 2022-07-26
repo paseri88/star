@@ -13,26 +13,69 @@ class PostsController < ApplicationController
     end
   
     def sport
-      @posts = Post.all
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end
   
     def job
-      @posts = Post.all
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end
 
     def art
-      @posts = Post.all
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end
   
     def bed
-      @posts = Post.all
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end
   
     def other
-      @posts = Post.all
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end
 
     def home
+      if params[:search] == nil
+        @posts= Post.all
+      elsif params[:search] == ''
+        @posts= Post.all
+      else
+        #部分検索
+        @posts = Post.where("people LIKE ? ",'%' + params[:search] + '%')
+      end
     end 
 
     def bot
@@ -80,7 +123,7 @@ class PostsController < ApplicationController
       def destroy
         post = Post.find(params[:id])
         post.destroy
-        redirect_to action: :index
+        redirect_to request.referer
       end
     
       private

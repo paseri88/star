@@ -1,38 +1,92 @@
-<%= link_to "TOP", "/home" %>
-<%= link_to "ABOUT", "/bot" %>
-<% if user_signed_in? %>
-<li><%= link_to "My page", user_path(current_user.id) %></li>
-<% end %>
-<li><%= link_to "Sign up", new_user_registration_path %></li>  
-<li><%= link_to "Sign in", new_user_session_path %></li>
-<%= link_to "ALL", posts_path %>
-<%= link_to "新規投稿へ", new_post_path %>
-<%= link_to "勉強", "/study" %>
-<%= link_to "運動", "/sport" %>
-<%= link_to "仕事", "/job" %>
-<%= link_to "美容", "/art" %>
-<%= link_to "暮らし", "/bed" %>
-<%= link_to "その他", "/other" %>
-<p><h1>My page</h1><%= @user.name %>さん</p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<div class="my-image">
+  <div class="tag1">
+  </div>  
+  <div class ="home-header">
+      <div class="home-topabout">
+      <%= link_to "TOP", "/home" ,class:"edit3" %>
+      <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+      </div>
+      <div class="home-menu">
+      </div>
+      <div class="home-ham">
+          <div id="hamburg">
+              <input id="input" type="checkbox"> 
+              <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+              <div id="content"> 
+              <ul class="list">
+                  <div class="home-ham1">
+                  <% if user_signed_in? %>
+                  <li><%= link_to "My page", user_path(current_user.id) %></li>
+                  <% end %>
+                  </div>
+                  <div class="home-ham1">
+                  <li><a href="/users/sign_up">Sign up</a>           
+                  </li>
+                  </div>
+                  <div class="home-ham1">
+                  <li><a href="/users/sign_in">Sign in</a>   
+                  </li>
+                  </div>
+                  <div class="home-ham1">
+                  <% if user_signed_in? %>
+                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                  <% end %>
+                  </div>
+                  
+              </ul>
+              </div>
+          </div>
+      </div>
+  </div>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "プロフィール変更", edit_user_registration_path %>
-<% end %>
+  <div class="my-top">
+    <p><h1>My page</h1><%= @user.name %>さん</p>
+    <p>メールアドレス : <%= @user.email %></p>
+    <p>プロフィール : <%= @user.profile %></p>
 
-<h2>投稿一覧</h2>
-<% @user.posts.each do |t| %>
-  <%= t.people %>
-  <%= link_to "詳細へ", post_path(t.id) %>
-  <%= link_to "編集する", edit_post_path(t.id) %>
-  <%= link_to "削除する", post_path(t.id), method: :delete %>
-<% end %>
+    <% if current_user.id == @user.id %>
+      <%= link_to "プロフィール変更", edit_user_registration_path ,class:"pro" %>
+    <% end %>
+  <br></br>
+  <h3>投稿一覧へ</h3>
+  <%= link_to "ALL", posts_path ,class:"edit"%>
+  <%= link_to "勉強", "/study" ,class:"edit"%>
+  <%= link_to "運動", "/sport" ,class:"edit"%>
+  <%= link_to "仕事", "/job" ,class:"edit"%>
+  <%= link_to "美容", "/art" ,class:"edit"%>
+  <%= link_to "暮らし", "/bed" ,class:"edit"%>
+  <%= link_to "その他", "/other" ,class:"edit"%>
+  <%= link_to "＋新規投稿へ", new_post_path ,class:"create1"%></br>
+  </div>
+  <div class="my-chat">
+    <div class="my-content">
+      <h2>投稿一覧</h2>
+      <div class="my-post">
+        <% @user.posts.each do |t| %>
+          <div class="my-people">
+          <p>・<%= t.people %></p>
+          </div>
+          <div class="my-path">
+            <%= link_to "詳細へ", post_path(t.id) ,class:"back"%>
+            <%= link_to "編集する", edit_post_path(t.id) ,class:"back"%>
+            <%= link_to "削除する", post_path(t.id), method: :delete ,class:"cut"%>
+          </div>
+        <% end %>
+      </div>
 
-<h2>いいねした投稿一覧</h2>
-<% @user.liked_posts.each do |t| %>
-  <%= t.user.name %>
-  <%= t.people %>
-  <%= link_to "詳細へ", post_path(t.id) %>
-<% end %>
+      <h2>いいねした投稿一覧</h2>
+      <div class="my-like">
+        
+          <% @user.liked_posts.each do |t| %>
+            <%= t.user.name %>
+        <div class="my-like1">
+            <p>・<%= t.people %></p>
+            <%= link_to "詳細へ", post_path(t.id) ,class:"detail" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
 

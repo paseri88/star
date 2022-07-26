@@ -1,13 +1,57 @@
-<%= form_for @post do |f| %>
-    <%= f.label :body %>
-    <%= f.text_field :people, :size => 140 %> 
-    <%= f.submit "編集する" %>
-  <% end %>
-  <%= link_to "ALL", posts_path %>
-  <%= link_to "勉強", "/study" %>
-  <%= link_to "運動", "/sport" %>
-  <%= link_to "仕事", "/job" %>
-  <%= link_to "美容", "/art" %>
-  <%= link_to "暮らし", "/bed" %>
-  <%= link_to "その他", "/other" %>
-  <%= link_to "Back", :back %>
+<div class="user-image">
+  <div class="edit-toumei">
+    <div class="tag1">
+        </div>  
+        <div class ="home-header">
+            <div class="home-topabout">
+            <%= link_to "TOP", "/home" ,class:"edit3" %>
+            <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+            </div>
+            <div class="home-menu">
+            </div>
+            <div class="home-ham">
+                <div id="hamburg">
+                    <input id="input" type="checkbox"> 
+                    <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+                    <div id="content"> 
+                    <ul class="list">
+                        <div class="home-ham1">
+                        <% if user_signed_in? %>
+                        <li><%= link_to "My page", user_path(current_user.id) %></li>
+                        <% end %>
+                        </div>
+                        <div class="home-ham1">
+                        <li><a href="/users/sign_up">Sign up</a>           
+                        </li>
+                        </div>
+                        <div class="home-ham1">
+                        <li><a href="/users/sign_in">Sign in</a>   
+                        </li>
+                        </div>
+                        <div class="home-ham1">
+                        <% if user_signed_in? %>
+                        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                        <% end %>
+                        </div>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+      </div>
+    <div class="edit-top">
+      <%= form_for @post do |f| %>
+          <%= f.label :話したいこと ,class:"talk" %><br>
+          <%= f.text_area :people, :size => "90x5" %>
+          <%= f.submit "編集する" ,class:"user-button"%>
+        <% end %>
+        <%= link_to "ALL", posts_path %>
+        <%= link_to "勉強", "/study" %>
+        <%= link_to "運動", "/sport" %>
+        <%= link_to "仕事", "/job" %>
+        <%= link_to "美容", "/art" %>
+        <%= link_to "暮らし", "/bed" %>
+        <%= link_to "その他", "/other" %>
+        <%= link_to "Back", :back %>
+    </div>
+  </div>
+</div>

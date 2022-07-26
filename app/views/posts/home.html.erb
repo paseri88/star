@@ -1,15 +1,77 @@
-<%= link_to "TOP", "/home" %>
-<%= link_to "ABOUT", "/bot" %>
-<% if user_signed_in? %>
-<li><%= link_to "My page", user_path(current_user.id) %></li>
-<% end %>
+<div class = "home-image">
+    <div class="tag1">
+    </div>  
+    <div class ="home-header">
+        <div class="home-topabout">
+        <%= link_to "TOP", "/home" ,class:"edit3" %>
+        <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+        </div>
+        <div class="home-menu">
+        </div>
+        <div class="home-ham">
+            <div id="hamburg">
+                <input id="input" type="checkbox"> 
+                <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+                <div id="content"> 
+                <ul class="list">
+                    <div class="home-ham1">
+                    <% if user_signed_in? %>
+                    <li><%= link_to "My page", user_path(current_user.id) %></li>
+                    <% end %>
+                    </div>
+                    <div class="home-ham1">
+                    <li><a href="/users/sign_up">Sign up</a>           
+                    </li>
+                    </div>
+                    <div class="home-ham1">
+                    <li><a href="/users/sign_in">Sign in</a>   
+                    </li>
+                    </div>
+                    <div class="home-ham1">
+                    <% if user_signed_in? %>
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                    <% end %>
+                    </div>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+      
 
 
-<h1>ナガレボシ</h1>
-<h3>〜願い事をあなたの手で〜<h3>
-<%= link_to "勉強", "/study" %>
-<%= link_to "運動", "/sport" %>
-<%= link_to "仕事", "/job" %>
-<%= link_to "美容", "/art" %>
-<%= link_to "暮らし", "/bed" %>
-<%= link_to "その他", "/other" %>
+    <div class = "home-box">
+        <div class = "home-left">
+            <div class="home-left1">
+            </div>
+            <div class="home-left2">
+                <div class="home-left2a">
+                </div>
+                <div class="home-left2b">
+                    <h1>ナガレボシ</h1>
+                    <h3>〜願い事をあなたの手で〜<h3>
+                </div>
+            </div>
+        </div>
+        <div class = "home-right">
+            <div class = "home-item">
+                <%= button_to "勉強", "/study",method: :get ,class:"study"%>
+            </div>
+            <div class = "home-item">
+                <%= button_to "運動", "/sport",method: :get ,class:"sport"%>
+            </div>
+            <div class = "home-item">
+                <%= button_to "仕事", "/job",method: :get ,class:"job"%>
+            </div>
+            <div class = "home-item">
+                <%= button_to "美容", "/art",method: :get ,class:"art"%>
+            </div>
+            <div class = "home-item">
+                <%= button_to "暮らし", "/bed",method: :get ,class:"bed"%>
+            </div>
+            <div class = "home-item">
+                <%= button_to "その他", "/other",method: :get ,class:"other"%>
+            </div>
+        </div>
+    </div>
+</div>

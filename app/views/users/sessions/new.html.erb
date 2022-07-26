@@ -1,27 +1,78 @@
-<h2>Sign in</h2>
+<div class="user-image2">
+  <div class="toumei2">
+      <div class="tag1">
+        </div>  
+        <div class ="home-header">
+            <div class="home-topabout">
+            <%= link_to "TOP", "/home" ,class:"edit3" %>
+            <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+            </div>
+            <div class="home-menu">
+            </div>
+            <div class="home-ham">
+                <div id="hamburg">
+                    <input id="input" type="checkbox"> 
+                    <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+                    <div id="content"> 
+                    <ul class="list">
+                        <div class="home-ham1">
+                        <% if user_signed_in? %>
+                        <li><%= link_to "My page", user_path(current_user.id) %></li>
+                        <% end %>
+                        </div>
+                        <div class="home-ham1">
+                        <li><a href="/users/sign_up">Sign up</a>           
+                        </li>
+                        </div>
+                        <div class="home-ham1">
+                        <li><a href="/users/sign_in">Sign in</a>   
+                        </li>
+                        </div>
+                        <div class="home-ham1">
+                        <% if user_signed_in? %>
+                        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                        <% end %>
+                        </div>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+       </div>
+    <div class="user-hollin">
+      <div class="user-left2">
+      </div>
+      <div class="user-right">
+        <h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => 70 %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", :size => 70 %>
+          </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Sign in",class:"user-button1" %>
+          </div>
+        <% end %>
+
+        <%= render "users/shared/links" %>
+        <%= link_to "Back", :back %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Sign in" %>
+    <br>
+    <br>
+    <br>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-<%= link_to "Back", :back %>
+</div>

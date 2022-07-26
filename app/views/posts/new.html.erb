@@ -1,28 +1,63 @@
-<%= link_to "TOP", "/home" %>
-<%= link_to "ABOUT", "/bot" %>
-<% if user_signed_in? %>
-<li><%= link_to "My page", user_path(current_user.id) %></li>
-<% end %>
-<li><%= link_to "Sign up", new_user_registration_path %></li>  
-<li><%= link_to "Sign in", new_user_session_path %></li>
-<h1>ナガレボシ</h1>
-<h3>新規投稿</h3>
-<%= form_with model: @post do |f| %>
-  <br><%= f.label :ジャンル %>
-  <%= f.select :category, [["勉強", "study"], ["運動", "sport"], ["仕事", "job"], ["美容", "art"], ["暮らし", "bed"], ["その他", "other"]], include_blank: "どの投稿？" %>
-  <br><%= f.label :頑張ること %>
-  <%= f.text_field :target, :size => 140 %>
-  <br><%= f.label :話したいこと %>
-  <%= f.text_field :people, :size => 140 %>
-  <div class="field">
+<div class="new-image">
+  <div class="tag1">
+  </div>  
+  <div class ="home-header">
+      <div class="home-topabout">
+      <%= link_to "TOP", "/home" ,class:"edit3" %>
+      <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+      </div>
+      <div class="home-menu">
+      </div>
+      <div class="home-ham">
+          <div id="hamburg">
+              <input id="input" type="checkbox"> 
+              <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+              <div id="content"> 
+              <ul class="list">
+                  <div class="home-ham1">
+                  <% if user_signed_in? %>
+                  <li><%= link_to "My page", user_path(current_user.id) %></li>
+                  <% end %>
+                  </div>
+                  <div class="home-ham1">
+                  <li><a href="/users/sign_up">Sign up</a>           
+                  </li>
+                  </div>
+                  <div class="home-ham1">
+                  <li><a href="/users/sign_in">Sign in</a>   
+                  </li>
+                  </div>
+                  <div class="home-ham1">
+                  <% if user_signed_in? %>
+                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                  <% end %>
+                  </div>
+              </ul>
+              </div>
+          </div>
+      </div>
   </div>
-  <%= f.submit "宣言する!" %>
-<% end %>
-<%= link_to "ALL", posts_path %>
-<%= link_to "新規投稿へ", new_post_path %>
-<%= link_to "勉強", "/study" %>
-<%= link_to "運動", "/sport" %>
-<%= link_to "仕事", "/job" %>
-<%= link_to "美容", "/art" %>
-<%= link_to "暮らし", "/bed" %>
-<%= link_to "その他", "/other" %>
+  
+  <div class="new-top">
+    <h1>新規投稿</h1>
+    <%= form_with model: @post do |f| %>
+      <br><%= f.label :ジャンル %><br>
+      <%= f.select :category, [["勉強", "study"], ["運動", "sport"], ["仕事", "job"], ["美容", "art"], ["暮らし", "bed"], ["その他", "other"]], include_blank: "どの投稿？" %>
+      <br><%= f.label :頑張ること %><br>
+      <%= f.text_field :target, :size => 90 %>
+      <br><%= f.label :話したいこと %><br>
+      <%= f.text_area :people, :size => "90x5" %>
+      <div class="field">
+      </div>
+      <%= f.submit "宣言する!",class:"declare-button" %>
+    <% end %>
+    <%= link_to "ALL", posts_path ,class:"edit" %>
+    <%= link_to "新規投稿へ", new_post_path ,class:"edit"%>
+    <%= link_to "勉強", "/study" ,class:"edit"%>
+    <%= link_to "運動", "/sport" ,class:"edit"%>
+    <%= link_to "仕事", "/job" ,class:"edit"%>
+    <%= link_to "美容", "/art" ,class:"edit"%>
+    <%= link_to "暮らし", "/bed" ,class:"edit"%>
+    <%= link_to "その他", "/other" ,class:"edit"%>
+  </div>
+</div>

@@ -1,3 +1,127 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user-image{
+    background-image: url("home.jpg");
+    background-size: cover;
+    font-family: 'Kaisei Decol', serif;
+}
+
+.toumei{
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+    
+}
+
+.user-holl{
+    display: flex;
+}
+
+.user-left{
+    height: 100%;
+    width: 15%;
+}
+
+.user-right{
+    height: 100%;
+    width: 20%;
+    margin: 50px 0 0;
+}
+
+.user-image2{
+    background-image: url("home.jpg");
+    background-size: cover;
+   
+    font-family: 'Kaisei Decol', serif;
+}
+
+.toumei2{
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+}
+
+.user-hollin{
+    display: flex;
+}
+
+.user-left2{
+    width: 15%;
+}
+
+.user-right2{
+    height: 800px;
+    width: 20%;
+}
+
+.send-image{
+    background-image: url("home.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+    font-family: 'Kaisei Decol', serif;
+}
+
+.toumei3{
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+}
+
+.user-button{
+    background-color: rgba(0, 0, 0, 0.631);
+    color: rgb(255, 255, 255);
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.user-button1{
+    background-color: rgba(0, 0, 0, 0.631);
+    color: rgb(255, 255, 255);
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    font-family: 'Kaisei Decol', serif;
+}
+
+.edit-image{
+    background-image: url("home.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+}
+
+
+.edit-toumei{
+    background-color: rgba(255, 255, 255, 0.562);
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+}
+
+.user-edit{
+    margin: 50px;
+}
+
+.back{
+    color: rgb(145, 0, 212);
+}
+
+.back:hover{
+    color: rgb(242, 139, 247);
+}
+.cut{
+    color: rgb(84, 2, 217);
+}
+.cut:hover{
+    color: rgba(242, 139, 247, 0.611);
+}
+

@@ -1,13 +1,58 @@
-<%= link_to "TOP", "/home" %>
-<%= link_to "ABOUT", "/bot" %>
-<% if user_signed_in? %>
-<li><%= link_to "My page", user_path(current_user.id) %></li>
-<% end %>
-<li><%= link_to "Sign up", new_user_registration_path %></li>  
-<li><%= link_to "Sign in", new_user_session_path %></li>
-<h1>ABOUT<h/1>
-<h3>あなたには流れ星にお願いしたい目標や叶えたいことはありますか?<h3>
-<h3>「目標はあるけど何をしたらいいか分からない」<h3>
-<h3>「一緒にがんばってくれる仲間が欲しい」<h3> 
-<h3>このサイトはそんなあなたが仲間と情報共有したり応援しあったりする、<h3>
-<h3>あなた自身が「夢を叶える流れ星になる」ためのサイトです。<h3>
+
+
+<div class = "about-image">
+    <div class="tag1">
+    </div>  
+    <div class ="home-header">
+        <div class="home-topabout">
+        <%= link_to "TOP", "/home" ,class:"edit3" %>
+        <%= link_to "ABOUT", "/bot" ,class:"edit3" %>
+        </div>
+        <div class="home-menu">
+        </div>
+        <div class="home-ham">
+            <div id="hamburg">
+                <input id="input" type="checkbox"> 
+                <label id="label1" for="input"><div class="line1"></div><div class="line2"></div><div class="line3"></div></label> 
+                <div id="content"> 
+                <ul class="list">
+                    <div class="home-ham1">
+                    <% if user_signed_in? %>
+                    <li><%= link_to "My page", user_path(current_user.id) %></li>
+                    <% end %>
+                    </div>
+                    <div class="home-ham1">
+                    <li><a href="/users/sign_up">Sign up</a>           
+                    </li>
+                    </div>
+                    <div class="home-ham1">
+                    <li><a href="/users/sign_in">Sign in</a>   
+                    </li>
+                    </div>
+                    <div class="home-ham1">
+                    <% if user_signed_in? %>
+                    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></li>
+                    <% end %>
+                    </div>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-holl">
+        <div class="about-left">
+        </div>
+        <div class="about-right"> 
+            <div class="about-right1">
+            </div>
+            <div class="about-right2">
+                <h1>ABOUT</h1>
+                <h3>あなたには流れ星にお願いしたい目標や叶えたいことはありますか?<h3>
+                <h3>「目標はあるけど何をしたらいいか分からない」<h3>
+                <h3>「一緒にがんばってくれる仲間が欲しい」<h3> 
+                <h3>このサイトはそんなあなたが仲間と情報共有したり応援しあったりする、<h3>
+                <h3>あなた自身が「夢を叶える流れ星になる」ためのサイトです。<h3>
+            </div>
+        </div>
+    </div>
+</div>
